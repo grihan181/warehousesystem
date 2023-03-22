@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    restart: always
+    environment:
+      POSTGRES_DB: "kursach"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./kursach.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - /tmp/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+networks:
+  default:
+    name: kursach_network
+    attachable: true
+    driver: overlay
