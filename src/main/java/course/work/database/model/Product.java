@@ -1,14 +1,15 @@
 package course.work.database.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "Товар")
 public class Product {

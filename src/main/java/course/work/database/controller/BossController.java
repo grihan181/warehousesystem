@@ -4,27 +4,28 @@ import course.work.database.model.CompanyEmployee;
 import course.work.database.service.BossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/boss")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class BossController {
     @Autowired
     private BossService bossService;
 
-    @GetMapping("getAllEmployees")
+    @GetMapping("getAllEmployees") //TODO поместить в другой контролллер
     public String getAllEmployees(Model model) {
         model.addAttribute("allEmpList", bossService.getAllEmployee());
-        return "showAllEmployees";
+        return "showAll/showAllEmployees";
     }
-
     @GetMapping("addNewEmployee")
     public String addNewEmployee(Model model) {
         CompanyEmployee companyEmployee = new CompanyEmployee();
         model.addAttribute("employee", companyEmployee);
-        return "newEmployee";
+        return "newObject/newEmployee";
     }
 
     @PostMapping("save")
@@ -37,7 +38,7 @@ public class BossController {
     public String showEmployeeByIdForUpdate(@PathVariable long id, Model model) {
         CompanyEmployee companyEmployee = bossService.getByID(id);
         model.addAttribute("employee", companyEmployee);
-        return "update";
+        return "updateObject/updateEmployee";
     }
 
     @DeleteMapping("deleteEmployeeById/{id}")

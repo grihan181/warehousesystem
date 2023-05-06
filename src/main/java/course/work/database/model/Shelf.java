@@ -1,11 +1,12 @@
 package course.work.database.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "Стеллаж")
 public class Shelf {

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DataBaseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataBaseApplication.class, args);
+			SpringApplication.run(DataBaseApplication.class, args);
 	}
 
 }

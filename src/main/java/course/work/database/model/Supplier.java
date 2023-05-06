@@ -1,11 +1,14 @@
 package course.work.database.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "Поставщик")
 public class Supplier {

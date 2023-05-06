@@ -1,18 +1,25 @@
 package course.work.database.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+
+import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Data
-@NoArgsConstructor
 @Entity
+@RequiredArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "Сотрудник_компании")
 public class CompanyEmployee {
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -40,4 +47,11 @@ public class CompanyEmployee {
 
     @Column(name = "Электронный_адрес")
     private String email;
+
+    @Column(name = "Логин")
+    private String login;
+
+    @Column(name = "Пароль")
+    private String password;
+
 }

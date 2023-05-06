@@ -1,14 +1,15 @@
 package course.work.database.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "Склад")
 public class Warehouse {

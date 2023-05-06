@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Employee</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+    <h3>Employee List</h3>
+    <a th:href="@{/boss/addNewEmployee}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>
+    <table style="width:100%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Фамилия Сотрудника склада</th>
+            <th>Название склада</th>
+            <th>Начальная дата работы на складе</th>
+            <th>Конечная дата работы на складе</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employeeWarehouse:${employeeWarehouses}">
+            <td th:text="${employeeWarehouse.id}"></td>
+            <td> <a th:href="@{/boss/showEmployeeByIdForUpdate/{id}(id=${employeeWarehouse.companyEmployee.id})}"
+                    class="btn btn-primary" th:text="${employeeWarehouse.companyEmployee.surname}"></a></td>
+            <td><a th:href="@{/warehouse/showWarehouseByIdForUpdate/{id}(id=${employeeWarehouse.warehouse.id})}"
+                    class="btn btn-primary" th:text="${employeeWarehouse.warehouse.name}"></a></td>
+            <td th:text="${employeeWarehouse.initialDataWorkInClade}"></td>
+            <td th:text="${employeeWarehouse.finalDataWorkInClade}"></td>
+            <td> <a th:href="@{/warehouse/showEmployeeWarehouseByIdForUpdate/{id}(id=${employeeWarehouse.id})}"
+                    class="btn btn-primary"></a>
+                <a th:href="@{/boss/deleteEmployeeWarehouseById/{id}(id=${employee.id})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

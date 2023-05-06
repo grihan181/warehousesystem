@@ -7,7 +7,9 @@ id BIGINT PRIMARY KEY,
 "дата_рождения" VARCHAR(255),
 "адрес" VARCHAR(255),
 "сотовый_телефон" VARCHAR(255),
-"электронный_адрес" VARCHAR(255)
+"электронный_адрес" VARCHAR(255),
+"логин" VARCHAR(255),
+"пароль" VARCHAR(255)
 );
 
 
