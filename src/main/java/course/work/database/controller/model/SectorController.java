@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/sector")  //TODO фронт
+@RequestMapping("/sector")  // TODO фронт
 public class SectorController {
 
     @Autowired

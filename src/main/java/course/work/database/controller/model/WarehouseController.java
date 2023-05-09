@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/warehouse")  //TODO фронт
+@RequestMapping("/warehouse")  // TODO фронт
 public class WarehouseController {
 
     @Autowired

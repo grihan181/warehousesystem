@@ -9,41 +9,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/employeeWarehouse")    //TODO фронт
+@RequestMapping("/employeeWarehouse")
 public class EmployeeWarehouseController {
     @Autowired
     private EmployeeWarehouseService service;
 
 
-    @GetMapping("getAll") //TODO поместить в другой контролллер
+    @GetMapping("getAll")
     public String getAllEmployeesWarehouse(Model model) {
         model.addAttribute("employeeWarehouses", service.getAll());
-        return "showAllEmployees";
+        return "showAll/showAllEmployeeWarehouse";
     }
     @GetMapping("addNewEmployeeWarehouse")
     public String addNewEmployeeWarehouse(Model model) {
         EmployeeWarehouse employeeWarehouse = new EmployeeWarehouse();
         model.addAttribute("employeeWarehouse", employeeWarehouse);
-        return "newEmployee";
+        return "newObject/newEmployeeWarehouse";
     }
 
     @PostMapping("save")
     public String saveEmployeeWarehouse(@ModelAttribute("employeeWarehouse") EmployeeWarehouse employeeWarehouse) {
         service.save(employeeWarehouse);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/employeeWarehouse/getAll";
     }
 
     @GetMapping("showEmployeeWarehouseByIdForUpdate/{id}")
     public String showEmployeeWarehouseByIdForUpdate(@PathVariable long id, Model model) {
         EmployeeWarehouse employeeWarehouse = service.getByID(id);
         model.addAttribute("employeeWarehouse", employeeWarehouse);
-        return "update";
+        return "updateObject/updateEmployeeWarehouse";
     }
 
     @DeleteMapping("deleteEmployeeWarehouseById/{id}")
     public String deleteEmployeeWarehouseById(@PathVariable long id) {
         service.deleteViaId(id);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/employeeWarehouse/getAll";
     }
 
 

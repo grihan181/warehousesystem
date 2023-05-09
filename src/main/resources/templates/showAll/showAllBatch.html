@@ -27,7 +27,7 @@
         <tr th:each="batch:${batches}">
             <td th:text="${batch.id}"></td>
             <td th:text="${batch.batchNumber}"></td>
-            <td> <a th:href="@{/batch/showSupplierByIdForUpdate/{id}(id=${batch.supplier})}"
+            <td> <a th:href="@{/supplier/showSupplierByIdForUpdate/{id}(id=${batch.supplier.id})}"
                     class="btn btn-primary" th:text="${batch.supplier.id}"></a>
             <td th:text="${batch.amount}"></td>
             <td> <a th:href="@{/batch/showBatchByIdForUpdate/{id}(id=${batch.id})}"

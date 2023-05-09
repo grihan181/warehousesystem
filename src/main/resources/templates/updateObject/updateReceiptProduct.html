@@ -10,21 +10,21 @@
 </head>
 <body>
 <div class="container">
-  <h1>Информация о Batch</h1>
+  <h1>Информация о ReceiptProduct</h1>
   <hr>
-  <h2>Сохранить Batch</h2>
+  <h2>Сохранить ReceiptProduct</h2>
 
-  <form action="#" th:action="@{/batch/save}" th:object="${batch}" method="POST">
+  <form action="#" th:action="@{/receiptProduct/save}" th:object="${receiptProduct}" method="POST">
     <input type="hidden" th:field="*{id}" />
-    <input type="text" th:field="*{batchNumber}" placeholder="Номер партии" class="form-control mb-4 col-4">
-    <input type="text" th:field="*{supplier.id}" placeholder="Айди Поставщик" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{receipt.id}" placeholder="Айди чека" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{product.id}" placeholder="Айди продукта" class="form-control mb-4 col-4">
     <input type="text" th:field="*{amount}" placeholder="Количество" class="form-control mb-4 col-4">
-    <button type="submit" class="btn btn-info col-2">Save Employee</button>
+    <button type="submit" class="btn btn-info col-2">Save ReceiptProduct</button>
   </form>
 
   <hr>
 
-  <a th:href="@{/batch/getAll}"> Back to Batch List</a>
+  <a th:href="@{/receiptProduct/showAll}"> Back to ReceiptProduct List</a>
 </div>
 </body>
 </html>

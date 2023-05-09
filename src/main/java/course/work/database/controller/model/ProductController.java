@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/product")  //TODO фронт
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -20,31 +20,31 @@ public class ProductController {
     @GetMapping("getAll")
     public String getAllProduct(Model model) {
         model.addAttribute("products", service.getAll());
-        return "showAllEmployees";
+        return "showAll/showAllProduct";
     }
     @GetMapping("addNewProduct")
     public String addProduct(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "newEmployee";
+        return "newObject/newProduct";
     }
 
     @PostMapping("save")
     public String saveProduct(@ModelAttribute("product") Product product) {
         service.save(product);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/product/getAll";
     }
 
     @GetMapping("showProductByIdForUpdate/{id}")
     public String showProductByIdForUpdate(@PathVariable long id, Model model) {
         Product product = service.getByID(id);
         model.addAttribute("product", product);
-        return "update";
+        return "updateObject/updateProduct";
     }
 
     @DeleteMapping("deleteProductById/{id}")
     public String deleteProductById(@PathVariable long id) {
         service.deleteViaId(id);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/product/getAll";
     }
 }

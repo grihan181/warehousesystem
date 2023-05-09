@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/rubberProducts")  //TODO фронт
+@RequestMapping("/rubberProducts")
 public class RubberProductsController {
 
     @Autowired
@@ -18,31 +18,31 @@ public class RubberProductsController {
     @GetMapping("getAll")
     public String getAllRubberProducts(Model model) {
         model.addAttribute("rubberProducts", service.getAll());
-        return "showAllEmployees";
+        return "showAll/showAllRubberProducts";
     }
     @GetMapping("addNewRubberProducts")
     public String addRubberProducts(Model model) {
         RubberProducts rubberProducts = new RubberProducts();
         model.addAttribute("rubberProducts", rubberProducts);
-        return "newEmployee";
+        return "newObject/newRubberProducts";
     }
 
     @PostMapping("save")
     public String saveRubberProducts(@ModelAttribute("rubberProducts") RubberProducts rubberProducts) {
         service.save(rubberProducts);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/rubberProducts/getAll";
     }
 
     @GetMapping("showRubberProductsByIdForUpdate/{id}")
     public String showRubberProductsByIdForUpdate(@PathVariable long id, Model model) {
         RubberProducts rubberProducts = service.getByID(id);
         model.addAttribute("rubberProducts", rubberProducts);
-        return "update";
+        return "updateObject/updateRubberProducts";
     }
 
     @DeleteMapping("deleteRubberProductsById/{id}")
     public String deleteRubberProductsById(@PathVariable long id) {
         service.deleteViaId(id);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/rubberProducts/getAll";
     }
 }

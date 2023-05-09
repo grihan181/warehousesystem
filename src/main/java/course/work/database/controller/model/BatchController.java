@@ -27,7 +27,7 @@ public class BatchController {
     public String addNewBatch(Model model) {
         Batch batch = new Batch();
         model.addAttribute("batch", batch);
-        return "bewObject/newBatch";
+        return "newObject/newBatch";
     }
 
     @PostMapping("save")

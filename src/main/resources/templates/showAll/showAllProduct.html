@@ -12,40 +12,41 @@
 <div class="container my-2" align="center">
 
     <h3>Employee List</h3>
-    <a th:href="@{/boss/addNewEmployee}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>
+    <a th:href="@{/product/addNewProduct}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>
     <table style="width:100%" border="1"
            class = "table table-striped table-responsive-md">
         <thead>
         <tr>
             <th>Id</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Должность</th>
-            <th>Дата рождения</th>
-            <th>Адрес</th>
-            <th>Сотовый Телефон</th>
-            <th>Элктронный Адрес</th>
-            <th>Логин</th>
-            <th>Пароль</th>
+            <th>Название товара</th>
+            <th>Тип товара товара</th>
+            <th>Описание товара</th>
+            <th>Расположение товара</th>
+            <th>Id партии товара</th>
+            <th>Остаток организации товара</th>
+            <th>Единица измерения товара</th>
+            <th>Цена товара</th>
+            <th>Дата прихода товара</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee:${allEmpList}">
-            <td th:text="${employee.id}"></td>
-            <td th:text="${employee.surname}"></td>
-            <td th:text="${employee.name}"></td>
-            <td th:text="${employee.patronymic}"></td>
-            <td th:text="${employee.position}"></td>
-            <td th:text="${employee.dateOfBirth}"></td>
-            <td th:text="${employee.address}"></td>
-            <td th:text="${employee.phoneNumber}"></td>
-            <td th:text="${employee.email}"></td>
-            <td th:text="${employee.login}"></td>
-            <td th:text="${employee.password}"></td>
-            <td> <a th:href="@{/boss/showEmployeeByIdForUpdate/{id}(id=${employee.id})}"
+        <tr th:each="product:${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td> <a th:href="@{/productType/showProductTypeByIdForUpdate/{id}(id=${product.productType.id})}"
+                    class="btn btn-primary" th:text="${batch.productType.id}"></a>
+            <td th:text="${product.description}"></td>
+            <td> <a th:href="@{/shelf/showShelfByIdForUpdate/{id}(id=${product.shelf.id})}"
+                    class="btn btn-primary" th:text="${product.shelf.id}"></a>
+            <td> <a th:href="@{/batch/showBatchByIdForUpdate/{id}(id=${product.batch.id})}"
+                    class="btn btn-primary" th:text="${product.batch.id}"></a>
+            <td th:text="${product.remains}"></td>
+            <td th:text="${product.unitOfMeasurement}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.arrivalDate}"></td>
+            <td> <a th:href="@{/product/showProductByIdForUpdate/{id}(id=${product.id})}"
                     class="btn btn-primary">Update</a>
-                <a th:href="@{/boss/deleteEmployeeById/{id}(id=${employee.id})}"
+                <a th:href="@{/product/deleteProductById/{id}(id=${product.id})}"
                    class="btn btn-danger">Delete</a>
             </td>
         </tr>

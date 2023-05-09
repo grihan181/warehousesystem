@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/productType")  //TODO фронт
+@RequestMapping("/productType")
 public class ProductTypeController {
 
     @Autowired
@@ -19,32 +19,32 @@ public class ProductTypeController {
 
     @GetMapping("getAll")
     public String getAllProductType(Model model) {
-        model.addAttribute("ProductTypes", service.getAll());
-        return "showAllEmployees";
+        model.addAttribute("productTypes", service.getAll());
+        return "showAll/showAllProductType";
     }
     @GetMapping("addNewProductType")
     public String addProductType(Model model) {
         ProductType productType = new ProductType();
         model.addAttribute("productType", productType);
-        return "newEmployee";
+        return "newObject/newProductType";
     }
 
     @PostMapping("save")
     public String saveProductType(@ModelAttribute("productType") ProductType productType) {
         service.save(productType);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/productType/getAll";
     }
 
     @GetMapping("showProductTypeByIdForUpdate/{id}")
     public String showProductTypeByIdForUpdate(@PathVariable long id, Model model) {
         ProductType productType = service.getByID(id);
         model.addAttribute("productType", productType);
-        return "update";
+        return "updateObject/updateProductType";
     }
 
     @DeleteMapping("deleteProductTypeById/{id}")
     public String deleteProductTypeById(@PathVariable long id) {
         service.deleteViaId(id);
-        return "redirect:/boss/getAllEmployees";
+        return "redirect:/productType/getAll";
     }
 }
