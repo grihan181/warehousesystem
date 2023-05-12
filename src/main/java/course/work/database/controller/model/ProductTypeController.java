@@ -5,12 +5,14 @@ import course.work.database.model.ProductType;
 import course.work.database.service.ProductService;
 import course.work.database.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/productType")
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class ProductTypeController {
 
     @Autowired
@@ -26,7 +28,7 @@ public class ProductTypeController {
     public String addProductType(Model model) {
         ProductType productType = new ProductType();
         model.addAttribute("productType", productType);
-        return "newObject/newProductType";
+        return "updateObject/updateProductType";
     }
 
     @PostMapping("save")

@@ -62,7 +62,6 @@ public class JwtTokenProvider {
 
     public String generateRefreshToken(@NonNull CompanyEmployee user) {
         final LocalDateTime now = LocalDateTime.now();
-        //TODO заменит время исхода токена
         final Instant refreshExpirationInstant = now.plusSeconds(10).atZone(ZoneId.systemDefault()).toInstant();
         final Date refreshExpiration = Date.from(refreshExpirationInstant);
         return Jwts.builder()

@@ -3,12 +3,14 @@ package course.work.database.controller.model;
 import course.work.database.model.Receipt;
 import course.work.database.service.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/receipt")
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class ReceiptController {
 
     @Autowired
@@ -24,7 +26,7 @@ public class ReceiptController {
     public String addReceipt(Model model) {
         Receipt receipt = new Receipt();
         model.addAttribute("receipt", receipt);
-        return "newObject/newReceipt";
+        return "updateObject/updateReceipt";
     }
 
     @PostMapping("save")

@@ -27,8 +27,8 @@ public class EmployeeWarehouse {
     private Warehouse warehouse;
 
     @Column(name = "Начальная_дата_работы_на_складе")
-    private LocalDate initialDataWorkInClade;
+    private String initialDataWorkInClade;
 
     @Column(name = "Конечная_дата_работы_на_складе")
-    private LocalDate finalDataWorkInClade;
+    private String finalDataWorkInClade;
 }

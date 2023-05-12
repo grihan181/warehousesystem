@@ -5,12 +5,14 @@ import course.work.database.model.Product;
 import course.work.database.service.BatchService;
 import course.work.database.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/product")
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class ProductController {
 
     @Autowired
@@ -22,11 +24,16 @@ public class ProductController {
         model.addAttribute("products", service.getAll());
         return "showAll/showAllProduct";
     }
+    /*@GetMapping("search")
+    public String getSearchProduct(Model model) {
+        model.addAttribute("products", service.searchAll());
+        return "showAll/showAllProduct";
+    }*/
     @GetMapping("addNewProduct")
     public String addProduct(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "newObject/newProduct";
+        return "updateObject/updateProduct";
     }
 
     @PostMapping("save")

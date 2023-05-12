@@ -15,9 +15,20 @@ id BIGINT PRIMARY KEY,
 
 CREATE TABLE IF NOT EXISTS "кассовый_чек" (
 id BIGINT PRIMARY KEY,
-"дата_покупки" DATE,
+"дата_покупки" VARCHAR(255),
 "продавец" BIGINT,
  FOREIGN KEY ("продавец")  REFERENCES "сотрудник_компании" (id)
+);
+
+
+CREATE TABLE IF NOT EXISTS "поставщик" (
+id BIGINT PRIMARY KEY,
+"название" VARCHAR(255),
+"сотрудник_для_связи" BIGINT,
+"адрес" VARCHAR(255),
+"телефон" VARCHAR(255),
+"факс" VARCHAR(255),
+"электронный_адрес" VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS "сотрудник_поставщика" (
@@ -29,18 +40,9 @@ id BIGINT PRIMARY KEY,
 "дата_рождения" VARCHAR(255),
 "адрес" VARCHAR(255),
 "сотовый_телефон" VARCHAR(255),
-"электронный_адрес" VARCHAR(255)
-);
-
-CREATE TABLE IF NOT EXISTS "поставщик" (
-id BIGINT PRIMARY KEY,
-"название" VARCHAR(255),
-"сотрудник_для_связи" BIGINT,
-"адрес" VARCHAR(255),
-"телефон" VARCHAR(255),
-"факс" VARCHAR(255),
 "электронный_адрес" VARCHAR(255),
- FOREIGN KEY ("сотрудник_для_связи")  REFERENCES "сотрудник_поставщика" (id)
+"компания_поставщика" BIGINT,
+ FOREIGN KEY ("компания_поставщика")  REFERENCES "поставщик" (id)
 );
 
 CREATE TABLE IF NOT EXISTS "склад"  (
@@ -55,8 +57,8 @@ CREATE TABLE IF NOT EXISTS "сотрудник_склад" (
   id BIGINT PRIMARY KEY,
   worker_id BIGINT REFERENCES "сотрудник_компании",
   warehouse_id BIGINT REFERENCES "склад",
-  "начальная_дата_работы_на_складе" DATE,
-  "конечная_дата_работы_на_складе" DATE
+  "начальная_дата_работы_на_складе" VARCHAR(255),
+  "конечная_дата_работы_на_складе" VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS "сектор"  (
@@ -110,7 +112,7 @@ id BIGINT PRIMARY KEY,
 "остаток_организации" DECIMAL,
 "единица_измерения" VARCHAR(255),
 "цена" DECIMAL,
-"дата_прихода" DATE,
+"дата_прихода" VARCHAR(255),
 
  FOREIGN KEY ("id_партии")  REFERENCES "партия" (id),
  FOREIGN KEY ("тип_товара")  REFERENCES "тип_товара" (id),

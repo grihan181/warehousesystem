@@ -3,28 +3,107 @@
     <div th:fragment="header-css">
         <!-- this is header-css -->
         <link rel="stylesheet" type="text/css"
-              href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
+              th:href="@{../../webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
         <link rel="stylesheet" th:href="@{/css/main.css}"
               href="../../css/main.css" />
+        <script th:src="@{//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js}"></script>
     </div>
 </head>
 <body>
 <div th:fragment="header">
     <!-- this is header -->
-    <nav class="navbar navbar-inverse">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand и toggle сгруппированы для лучшего отображения на мобильных дисплеях -->
             <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Avanesyan</a>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
+            <!-- Соберите навигационные ссылки, формы, и другой контент для переключения -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Home</a></li>
+                    <li class="active"><a th:href="@{/product/getAll}">Продукция <span class="sr-only">(current)</span></a></li>
+                    <li><a th:href="@{/productType/getAll}">Тип товара</a></li>
+                    <li><a th:href="@{/rubberProducts/getAll}">Раздел РТИ</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Кассовый чек<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/receipt/getAll}">Кассовый чек</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a th:href="@{/receiptProduct/getAll}">Чек товар</a></li>
+                            </ul>
+                        </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Расположение<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/warehouse/getAll}">Склад</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a th:href="@{/sector/getAll}">Сектор</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a th:href="@{/shelf/getAll}">Стеллаж</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Сотрудники компании<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/boss/getAllEmployees}">Сотрудники компании</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a th:href="@{/employeeWarehouse/getAll}">Сотрудники склада</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Поставщик<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/supplier/getAll}">Поставщик</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a th:href="@{/suppliersEmployee/getAll}">Сотрудники поставщика</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a th:href="@{/batch/getAll}">Партия</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </div>
-        </div>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group" action="#" th:action="@{/shelf/save}">
+                        <input id="productSearch" type="text" class="form-control" placeholder="Поиск товаров по названию">
+                    </div>
+                    <button type="button" onclick="test()" class="btn btn-default">Поиск</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
     </nav>
 </div>
 
+<div th:replace="fragments/footer :: footer"/>
 </body>
+<!--<script th:inline="javascript">
+      const url = '/product/';
+
+      function test() {
+            fetch(url + 'searchProduct/' + document.getElementById("productSearch").value, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                })
+                     .then(response => {
+                         if (response.ok) {
+                             response.json().then(function (data) {
+                              document.cookie = "Bearer " + data.accessToken;
+                              console.log(data);
+                              console.log(data.accessToken);
+                              let showAllProduct ='../product/showAllProduct';
+                              window.location.replace(showAllProduct);
+                          })
+                         }
+                        if (response.status === 400){
+                            alert("Incorrect data");
+                        }
+                    });
+        }
+</script>-->
 </html>

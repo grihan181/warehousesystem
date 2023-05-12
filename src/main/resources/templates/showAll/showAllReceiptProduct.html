@@ -2,17 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <div th:replace="fragments/header :: header-css"/>
     <title>Employee</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="fragments/header :: header"/>
 <div class="container my-2" align="center">
 
-    <h3>ReceiptProduct List</h3>
-    <a th:href="@{/receiptProduct/addNewReceiptProduct}" class="btn btn-primary btn-sm mb-3" >Add ReceiptProduct</a>
+    <h3>Список кассовых чеков с продукцией</h3>
+    <a th:href="@{/receiptProduct/addNewReceiptProduct}" class="btn btn-primary btn-sm mb-3" >Добавить кассовый чек с продукцией</a>
     <table style="width:100%" border="1"
            class = "table table-striped table-responsive-md">
         <thead>
@@ -35,12 +33,15 @@
 
             <td> <a th:href="@{/receiptProduct/showReceiptProductByIdForUpdate/{id}(id=${receiptProduct.id})}"
                     class="btn btn-primary"></a>
-                <a th:href="@{/receiptProduct/deleteReceiptProductById/{id}(id=${receiptProduct.id})}"
-                   class="btn btn-danger">Delete</a>
+                <form th:action="@{/receiptProduct/deleteReceiptProductById/{id}(id=${receiptProduct.id})}" th:method="delete" >
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+<div th:replace="fragments/footer :: footer"/>
 </body>
+
 </html>

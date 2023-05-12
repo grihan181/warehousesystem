@@ -30,7 +30,8 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
     private final JwtTokenFilter jwtFilter;
     /*
         @Override
@@ -68,14 +69,18 @@ public class SecurityConfig {
                         authz -> {
                             try {
                                 authz
-                                        .antMatchers("/api/v1/auth/**", "/").permitAll()
+                                        .antMatchers("/api/v1/auth/**", "/", "/css/**", "/webjars/**", "/logout").permitAll()
                                         .anyRequest().authenticated()
                                         .and()
                                         .formLogin()
                                         .loginPage("/login")
-                                        .defaultSuccessUrl("/boss/getAllEmployees", true)
+                                        .defaultSuccessUrl("/product/getAll", true)
                                         //.failureUrl("/login-error")
                                         .permitAll()
+                                        .and()
+                                        //.logout()
+                                        //.and()
+                                        .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                                         .and()
                                         .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);
                             } catch (Exception e) {

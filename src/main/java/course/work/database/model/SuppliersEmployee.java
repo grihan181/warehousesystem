@@ -39,4 +39,9 @@ public class SuppliersEmployee {
 
     @Column(name = "Электронный_адрес")
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "компания_поставщика")
+    private Supplier supplier;
+
 }

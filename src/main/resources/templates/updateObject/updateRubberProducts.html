@@ -2,28 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
+  <div th:replace="fragments/header :: header-css"/>
   <title>Employee Management System</title>
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="fragments/header :: header"/>
 <div class="container">
-  <h1>Информация о RubberProducts</h1>
+  <h1>Информация о Разделах РТИ</h1>
   <hr>
-  <h2>Сохранить RubberProducts</h2>
+  <h2>Сохранить Раздел РТИ</h2>
 
   <form action="#" th:action="@{/rubberProducts/save}" th:object="${rubberProducts}" method="POST">
     <input type="hidden" th:field="*{id}" />
-    <input type="text" th:field="*{name}" placeholder="Название" class="form-control mb-4 col-4">
-    <input type="text" th:field="*{description}" placeholder="Описание" class="form-control mb-4 col-4">
-    <button type="submit" class="btn btn-info col-2">Save RubberProducts</button>
+    <div class="form-group">
+      <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{description}" placeholder="Описание" class="form-control input-lg">
+    </div>
+    <button type="submit" class="btn btn-default">Сохранить Раздел РТИ</button>
   </form>
 
   <hr>
 
-  <a th:href="@{/rubberProducts/getAll}"> Back to RubberProducts List</a>
+  <a th:href="@{/rubberProducts/getAll}">Обратно к списку Разделов РТИ</a>
 </div>
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

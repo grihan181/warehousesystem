@@ -18,7 +18,7 @@ public class Receipt {
     private long id;
 
     @Column(name = "Дата_покупки")
-    private LocalDate timestamp;
+    private String timestamp;
 
     @ManyToOne
     @JoinColumn(name = "Продавец")

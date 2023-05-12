@@ -13,6 +13,15 @@ services:
       - /tmp/postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  app:
+    depends_on:
+      -   postgres
+    image: build-app
+    restart: always
+    ports:
+      - "8081:8081"
+    stdin_open: true
+    tty: true
 networks:
   default:
     name: kursach_network

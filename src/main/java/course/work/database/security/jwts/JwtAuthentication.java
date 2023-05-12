@@ -19,7 +19,7 @@ public class JwtAuthentication implements Authentication {
     private Set<Role> roles;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() { return roles; }
+    public Collection<? extends GrantedAuthority> getAuthorities() { return roles;}
 
     @Override
     public Object getCredentials() { return null; }

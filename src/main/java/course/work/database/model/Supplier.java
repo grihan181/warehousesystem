@@ -19,10 +19,6 @@ public class Supplier {
     @Column(name = "Название")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "Сотрудник_для_связи")
-    private SuppliersEmployee suppliersEmployee;
-
     @Column(name = "Адрес")
     private String address;
 

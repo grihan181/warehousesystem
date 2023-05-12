@@ -4,12 +4,14 @@ import course.work.database.model.CompanyEmployee;
 import course.work.database.model.EmployeeWarehouse;
 import course.work.database.service.EmployeeWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/employeeWarehouse")
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class EmployeeWarehouseController {
     @Autowired
     private EmployeeWarehouseService service;
@@ -24,7 +26,7 @@ public class EmployeeWarehouseController {
     public String addNewEmployeeWarehouse(Model model) {
         EmployeeWarehouse employeeWarehouse = new EmployeeWarehouse();
         model.addAttribute("employeeWarehouse", employeeWarehouse);
-        return "newObject/newEmployeeWarehouse";
+        return "updateObject/updateEmployeeWarehouse";
     }
 
     @PostMapping("save")

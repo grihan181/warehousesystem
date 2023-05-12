@@ -15,35 +15,48 @@
     <div class="row" style="margin-top:20px">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <form>
-                    <h1>Please Sign In</h1>
-                    <div class="input-form">
-                        <input type="text" name="login" id="login"
-                               placeholder="Login" required="required"/>
+                <h1>Пожалуйста войдите в аккаунт!</h1>
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username and password.
                     </div>
-                    <div class="input-form">
-                        <input type="password" name="password" id="password"
-                               placeholder="Password" required="required"/>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">
+                        You have been logged out.
                     </div>
+                </div>
 
-                    <div class="row">
-                            <input type="button" onclick="test()" value="Sign In"/>
-                        </div>
-                        </div>
+                <div class="form-group">
+                    <input type="text" name="login" id="login"
+                           placeholder="Login" required="required" autofocus="true" class="form-control input-lg"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password"
+                           placeholder="Password" required="required" autofocus="true" class="form-control input-lg"/>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <input class = "btn btn-default" type="button" onclick="test()" value="Войти"/>
                     </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        </div>
+                </div>
             </form>
         </div>
     </div>
 
 </div>
 
-<div th:replace="fragments/footer :: footer"/>
 
+
+<div th:replace="fragments/footer :: footer"/>
 </body>
 <script th:inline="javascript">
       const url = '/api/v1/auth/';
 
       function test() {
-      console.log('adafsaf');
             fetch(url + 'signin', {
                 method: 'POST',
                 headers: {
@@ -61,7 +74,7 @@
                               window.location.replace(logInUrl);
                           })
                          }
-                        if (response.status === 400){
+                        if (response.status === 500){
                             alert("Incorrect data");
                         }
                     });

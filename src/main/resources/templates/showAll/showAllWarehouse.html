@@ -2,55 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <div th:replace="fragments/header :: header-css"/>
     <title>Employee</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="fragments/header :: header"/>
 <div class="container my-2" align="center">
 
-    <h3>Employee List</h3>
-    <a th:href="@{/boss/addNewEmployee}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>
+    <h3>Список складов</h3>
+    <a th:href="@{/warehouse/addNewWarehouse}" class="btn btn-primary btn-sm mb-3" >Добавить склад</a>
     <table style="width:100%" border="1"
            class = "table table-striped table-responsive-md">
         <thead>
         <tr>
             <th>Id</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Должность</th>
-            <th>Дата рождения</th>
+            <th>Название</th>
             <th>Адрес</th>
-            <th>Сотовый Телефон</th>
-            <th>Элктронный Адрес</th>
-            <th>Логин</th>
-            <th>Пароль</th>
+            <th>Складской телефон</th>
+            <th>Площадь</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee:${allEmpList}">
-            <td th:text="${employee.id}"></td>
-            <td th:text="${employee.surname}"></td>
-            <td th:text="${employee.name}"></td>
-            <td th:text="${employee.patronymic}"></td>
-            <td th:text="${employee.position}"></td>
-            <td th:text="${employee.dateOfBirth}"></td>
-            <td th:text="${employee.address}"></td>
-            <td th:text="${employee.phoneNumber}"></td>
-            <td th:text="${employee.email}"></td>
-            <td th:text="${employee.login}"></td>
-            <td th:text="${employee.password}"></td>
-            <td> <a th:href="@{/boss/showEmployeeByIdForUpdate/{id}(id=${employee.id})}"
+        <tr th:each="warehouse:${warehouses}">
+            <td th:text="${warehouse.id}"></td>
+            <td th:text="${warehouse.name}"></td>
+            <td th:text="${warehouse.address}"></td>
+            <td th:text="${warehouse.warehousePhone}"></td>
+            <td th:text="${warehouse.square}"></td>
+            <td> <a th:href="@{/warehouse/showWarehouseByIdForUpdate/{id}(id=${warehouse.id})}"
                     class="btn btn-primary">Update</a>
-                <a th:href="@{/boss/deleteEmployeeById/{id}(id=${employee.id})}"
-                   class="btn btn-danger">Delete</a>
+                <form th:action="@{/warehouse/deleteWarehouseById/{id}(id=${warehouse.id})}" th:method="delete" >
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

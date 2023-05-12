@@ -8,27 +8,27 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="container">
-  <h1>Информация о Типе товара</h1>
+  <h1>Информация о Стеллаже</h1>
   <hr>
-  <h2>Сохранить Типе товара</h2>
+  <h2>Сохранить Стеллаж</h2>
 
-  <form action="#" th:action="@{/productType/save}" th:object="${productType}" method="POST">
+  <form action="#" th:action="@{/shelf/save}" th:object="${shelf}" method="POST">
     <input type="hidden" th:field="*{id}" />
     <div class="form-group">
       <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{description}" placeholder="Описание" class="form-control input-lg">
+      <input type="text" th:field="*{locationDescription}" placeholder="Описание местоположения" class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{rubberProducts.id}" placeholder="Id раздела РТИ" class="form-control input-lg">
+      <input type="text" th:field="*{sector.id}" placeholder="Айди Сектора" class="form-control input-lg">
     </div>
-      <button type="submit" class="btn btn-default">Сохранить Тип товара</button>
+    <button type="submit" class="btn btn-default">Сохранить Стеллаж</button>
   </form>
 
   <hr>
 
-  <a th:href="@{/productType/getAll}">Обратно к списку типов товара</a>
+  <a th:href="@{/shelf/getAll}">Обратно к списку Стеллажей</a>
 </div>
 <div th:replace="fragments/footer :: footer"/>
 </body>

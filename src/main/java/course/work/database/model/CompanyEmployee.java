@@ -37,7 +37,7 @@ public class CompanyEmployee {
     private String position;
 
     @Column(name = "Дата_рождения")
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "Адрес")
     private String address;

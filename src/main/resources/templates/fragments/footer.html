@@ -1,6 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{../../webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
+    <script th:src="@{//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js}"></script>
+
 </head>
 <body>
 <div th:fragment="footer">
@@ -9,19 +15,20 @@
 
         <footer>
         <!-- this is footer -->
-        &copy; 2017 mkyong.com
+        &copy; 2023 avanesyan.com
             <span sec:authorize="isAuthenticated()">
-                | Logged user: <span sec:authentication="name"></span> |
-                Roles: <span sec:authentication="principal.authorities"></span> |
-                <a th:href="@{/logout}">Sign Out</a>
+                | Авторизован пользователь: <span sec:authentication="firstName"></span> |
+                Роль: <span sec:authentication="roles"></span> |
+                <a th:href="@{/logout}">Выйти из аккаунта</a>
             </span>
 
         <script type="text/javascript"
-                src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
         </footer>
     </div>
 
 </div>
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

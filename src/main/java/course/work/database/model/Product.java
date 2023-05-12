@@ -45,7 +45,7 @@ public class Product {
     private int price;
 
     @Column(name = "Дата_прихода")
-    private LocalDate arrivalDate;
+    private String arrivalDate;
 
 
 }

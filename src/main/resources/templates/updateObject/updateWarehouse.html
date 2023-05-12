@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <div th:replace="fragments/header :: header-css"/>
+  <title>Employee Management System</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+  <h1>Информация о складе</h1>
+  <hr>
+  <h2>Сохранить склад</h2>
+
+  <form action="#" th:action="@{/warehouse/save}" th:object="${warehouse}" method="POST">
+    <input type="hidden" th:field="*{id}" />
+    <div class="form-group">
+      <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{address}" placeholder="Адрес" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{warehousePhone}" placeholder="Складской телефон" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{square}" placeholder="Площадь" class="form-control input-lg">
+    </div>
+      <button type="submit" class="btn btn-default">Сохранить склад</button>
+  </form>
+
+  <hr>
+
+  <a th:href="@{/warehouse/getAll}">Обратно к списку Складов</a>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

@@ -3,12 +3,14 @@ package course.work.database.controller.model;
 import course.work.database.model.RubberProducts;
 import course.work.database.service.RubberProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/rubberProducts")
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class RubberProductsController {
 
     @Autowired
@@ -24,7 +26,7 @@ public class RubberProductsController {
     public String addRubberProducts(Model model) {
         RubberProducts rubberProducts = new RubberProducts();
         model.addAttribute("rubberProducts", rubberProducts);
-        return "newObject/newRubberProducts";
+        return "updateObject/updateRubberProducts";
     }
 
     @PostMapping("save")

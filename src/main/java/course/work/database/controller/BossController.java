@@ -11,29 +11,33 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/boss")
-@PreAuthorize("hasAuthority('ADMIN')")
 public class BossController {
     @Autowired
     private BossService bossService;
 
-    @GetMapping("getAllEmployees") //TODO поместить в другой контролллер
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    @GetMapping("getAllEmployees")
     public String getAllEmployees(Model model) {
         model.addAttribute("allEmpList", bossService.getAllEmployee());
         return "showAll/showAllEmployees";
     }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("addNewEmployee")
     public String addNewEmployee(Model model) {
         CompanyEmployee companyEmployee = new CompanyEmployee();
         model.addAttribute("employee", companyEmployee);
-        return "newObject/newEmployee";
+        return "updateObject/updateEmployee";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("save")
     public String saveEmployee(@ModelAttribute("employee") CompanyEmployee companyEmployee) {
         bossService.save(companyEmployee);
         return "redirect:/boss/getAllEmployees";
     }
 
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @GetMapping("showEmployeeByIdForUpdate/{id}")
     public String showEmployeeByIdForUpdate(@PathVariable long id, Model model) {
         CompanyEmployee companyEmployee = bossService.getByID(id);
@@ -41,6 +45,7 @@ public class BossController {
         return "updateObject/updateEmployee";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("deleteEmployeeById/{id}")
     public String deleteEmployeeById(@PathVariable long id) {
         bossService.deleteViaId(id);

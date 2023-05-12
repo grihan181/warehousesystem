@@ -7,6 +7,7 @@ import course.work.database.repository.CompanyEmployeeRepo;
 import course.work.database.service.BossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +23,10 @@ public class BossServiceImpl implements BossService {
         return comEmpRep.findAll();
     }
 
+
     @Override
     public void save(CompanyEmployee companyEmployee) {
-        companyEmployee.setPassword(String.valueOf(new BCryptPasswordEncoder(12).encode(companyEmployee.getPassword())));
+        companyEmployee.setPassword(companyEmployee.getPassword());
         companyEmployee.setRole(Role.USER);
         companyEmployee.setStatus(Status.ACTIVE);
         comEmpRep.save(companyEmployee);

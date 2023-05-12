@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  */
 @RequiredArgsConstructor
 public enum Role implements GrantedAuthority {
-    ADMIN("ADMIN"),
+     ADMIN("ADMIN"),
     USER("USER");
 
     private final String vale;

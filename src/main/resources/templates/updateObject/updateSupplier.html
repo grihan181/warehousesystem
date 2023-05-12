@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <div th:replace="fragments/header :: header-css"/>
+  <title>Employee Management System</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+  <h1>Информация о Поставщике</h1>
+  <hr>
+  <h2>Сохранить Поставщика</h2>
+
+  <form action="#" th:action="@{/supplier/save}" th:object="${supplier}" method="POST">
+    <input type="hidden" th:field="*{id}" />
+    <div class="form-group">
+      <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{address}" placeholder="Адрес компании" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{phone}" placeholder="Телефон компании" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{fax}" placeholder="Факс компании" class="form-control input-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" th:field="*{email}" placeholder="Электронный адрес компании" class="form-control input-lg">
+    </div>
+      <button type="submit" class="btn btn-default">Сохранить Поставщика</button>
+  </form>
+
+  <hr>
+
+  <a th:href="@{/supplier/getAll}">Обратно к списку поставщиков</a>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
