@@ -29,7 +29,7 @@ public class SuppliersEmployee {
     private String position;
 
     @Column(name = "Дата_рождения")
-    private Timestamp dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "Адрес")
     private String address;

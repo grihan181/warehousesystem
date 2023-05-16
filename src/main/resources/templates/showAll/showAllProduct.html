@@ -32,7 +32,7 @@
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
             <td> <a th:href="@{/productType/showProductTypeByIdForUpdate/{id}(id=${product.productType.id})}"
-                    class="btn btn-primary" th:text="${batch.productType.id}"></a>
+                    class="btn btn-primary" th:text="${product.productType.id}"></a>
             <td th:text="${product.description}"></td>
             <td> <a th:href="@{/shelf/showShelfByIdForUpdate/{id}(id=${product.shelf.id})}"
                     class="btn btn-primary" th:text="${product.shelf.id}"></a>

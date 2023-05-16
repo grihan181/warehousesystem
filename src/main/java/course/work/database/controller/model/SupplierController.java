@@ -20,7 +20,7 @@ public class SupplierController {
     @GetMapping("getAll")
     public String getAllSupplier(Model model) {
         model.addAttribute("suppliers", service.getAll());
-        return "showAll/showAll";
+        return "showAll/showAllSupplier";
     }
     @GetMapping("addNewSupplier")
     public String addSupplier(Model model) {
