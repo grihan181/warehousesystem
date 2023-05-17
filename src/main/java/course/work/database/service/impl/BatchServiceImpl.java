@@ -1,15 +1,13 @@
 package course.work.database.service.impl;
 
-import course.work.database.model.*;
+import course.work.database.model.Batch;
+import course.work.database.model.Supplier;
 import course.work.database.repository.BatchRepo;
-import course.work.database.repository.EmployeeWarehouseRepo;
 import course.work.database.repository.SupplierRepo;
 import course.work.database.service.BatchService;
-import course.work.database.service.EmployeeWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

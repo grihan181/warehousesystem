@@ -126,4 +126,4 @@ CREATE TABLE IF NOT EXISTS "чек_товар" (
   "количество" DECIMAL
 );
 
-
+CREATE INDEX product_name_index ON товар (название);

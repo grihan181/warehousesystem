@@ -1,8 +1,6 @@
 package course.work.database.controller.model;
 
-import course.work.database.model.Batch;
 import course.work.database.model.Product;
-import course.work.database.service.BatchService;
 import course.work.database.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,11 +22,11 @@ public class ProductController {
         model.addAttribute("products", service.getAll());
         return "showAll/showAllProduct";
     }
-    /*@GetMapping("search")
-    public String getSearchProduct(Model model) {
-        model.addAttribute("products", service.searchAll());
+    @GetMapping("search")
+    public String getSearchProduct(Model model, String searchWord) {
+        model.addAttribute("products", service.searchAllLike(searchWord));
         return "showAll/showAllProduct";
-    }*/
+    }
     @GetMapping("addNewProduct")
     public String addProduct(Model model) {
         Product product = new Product();

@@ -12,19 +12,19 @@
   <hr>
   <h2>Сохранить сотрудника по складу</h2>
 
-  <form action="#" th:action="@{/employeeWarehouse/save}" th:object="${employeeWarehouse}" method="POST">
+  <form action="#" th:action="@{/employeeWarehouse/save}" th:object="${employeeWarehouse}" required method="POST">
     <input type="hidden" th:field="*{id}" />
     <div class="form-group">
-        <input type="text" th:field="*{companyEmployee.id}" placeholder="Айди сотрудника" class="form-control input-lg">
+        <input type="text" th:field="*{companyEmployee.id}" placeholder="Айди сотрудника" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{warehouse.id}" placeholder="Айди склада" class="form-control input-lg">
+      <input type="text" th:field="*{warehouse.id}" placeholder="Айди склада" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{initialDataWorkInClade}" placeholder="Начальная дата работы на складе" class="form-control input-lg">
+      <input type="text" th:field="*{initialDataWorkInClade}" placeholder="Начальная дата работы на складе" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{finalDataWorkInClade}" placeholder="Конечная дата работы на складе" class="form-control input-lg">
+      <input type="text" th:field="*{finalDataWorkInClade}" placeholder="Конечная дата работы на складе" required class="form-control input-lg">
     </div>
       <button type="submit" class="btn btn-default">Save EmployeeWarehouse</button>
   </form>

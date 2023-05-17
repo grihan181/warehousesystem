@@ -1,6 +1,5 @@
 package course.work.database.controller.model;
 
-import course.work.database.model.CompanyEmployee;
 import course.work.database.model.EmployeeWarehouse;
 import course.work.database.service.EmployeeWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;

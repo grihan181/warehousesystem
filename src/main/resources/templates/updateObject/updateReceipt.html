@@ -15,10 +15,10 @@
   <form action="#" th:action="@{/receipt/save}" th:object="${receipt}" method="POST">
     <input type="hidden" th:field="*{id}" />
     <div class="form-group">
-        <input type="text" th:field="*{timestamp}" placeholder="Дата покупки" class="form-control input-lg">
+        <input type="text" th:field="*{timestamp}" placeholder="Дата покупки" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{companyEmployee.id}" placeholder="Айди Продавца" class="form-control input-lg">
+      <input type="text" th:field="*{companyEmployee.id}" placeholder="Айди Продавца" required class="form-control input-lg">
     </div>
     <button type="submit" class="btn btn-default">Сохранить кассовый чек</button>
   </form>

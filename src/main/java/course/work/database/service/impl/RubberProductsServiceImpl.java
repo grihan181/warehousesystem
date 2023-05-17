@@ -1,10 +1,7 @@
 package course.work.database.service.impl;
 
-import course.work.database.model.Product;
 import course.work.database.model.RubberProducts;
-import course.work.database.repository.ProductRepo;
 import course.work.database.repository.RubberProductsRepo;
-import course.work.database.service.ProductService;
 import course.work.database.service.RubberProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

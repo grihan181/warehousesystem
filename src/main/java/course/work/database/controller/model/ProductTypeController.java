@@ -1,8 +1,6 @@
 package course.work.database.controller.model;
 
-import course.work.database.model.Product;
 import course.work.database.model.ProductType;
-import course.work.database.service.ProductService;
 import course.work.database.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

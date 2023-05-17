@@ -15,19 +15,19 @@
   <form action="#" th:action="@{/supplier/save}" th:object="${supplier}" method="POST">
     <input type="hidden" th:field="*{id}" />
     <div class="form-group">
-      <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
+      <input type="text" th:field="*{name}" placeholder="Название" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{address}" placeholder="Адрес компании" class="form-control input-lg">
+      <input type="text" th:field="*{address}" placeholder="Адрес компании" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{phone}" placeholder="Телефон компании" class="form-control input-lg">
+      <input type="text" th:field="*{phone}" placeholder="Телефон компании" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{fax}" placeholder="Факс компании" class="form-control input-lg">
+      <input type="text" th:field="*{fax}" placeholder="Факс компании" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{email}" placeholder="Электронный адрес компании" class="form-control input-lg">
+      <input type="text" th:field="*{email}" placeholder="Электронный адрес компании" required class="form-control input-lg">
     </div>
       <button type="submit" class="btn btn-default">Сохранить Поставщика</button>
   </form>

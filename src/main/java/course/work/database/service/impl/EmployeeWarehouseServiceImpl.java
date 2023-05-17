@@ -1,10 +1,11 @@
 package course.work.database.service.impl;
 
-import course.work.database.model.*;
+import course.work.database.model.CompanyEmployee;
+import course.work.database.model.EmployeeWarehouse;
+import course.work.database.model.Warehouse;
 import course.work.database.repository.EmployeeWarehouseRepo;
 import course.work.database.service.EmployeeWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

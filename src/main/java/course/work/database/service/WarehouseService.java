@@ -1,7 +1,5 @@
 package course.work.database.service;
 
-import course.work.database.model.CompanyEmployee;
-import course.work.database.model.EmployeeWarehouse;
 import course.work.database.model.Warehouse;
 import org.springframework.stereotype.Service;
 

@@ -2,12 +2,9 @@ package course.work.database.model;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Data
 @RequiredArgsConstructor

@@ -16,13 +16,13 @@
   <form action="#" th:action="@{/receiptProduct/save}" th:object="${receiptProduct}" method="POST">
     <input type="hidden" th:field="*{id}"/>
     <div class="form-group">
-        <input type="text" th:field="*{receipt.id}" placeholder="Айди чека" class="form-control input-lg">
+        <input type="text" th:field="*{receipt.id}" placeholder="Айди чека" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{product.id}" placeholder="Айди продукта" class="form-control input-lg">
+      <input type="text" th:field="*{product.id}" placeholder="Айди продукта" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{amount}" placeholder="Количество" class="form-control input-lg">
+      <input type="text" th:field="*{amount}" placeholder="Количество" required class="form-control input-lg">
     </div>
       <button type="submit" class="btn btn-default">Save ReceiptProduct</button>
   </form>

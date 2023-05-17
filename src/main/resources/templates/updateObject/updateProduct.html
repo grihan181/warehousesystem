@@ -12,34 +12,34 @@
   <hr>
   <h2>Сохранить товар</h2>
 
-  <form action="#" th:action="@{/product/save}" th:object="${product}" method="POST">
+  <form action="#" th:action="@{/product/save}" th:object="${product}" required method="POST">
     <input type="hidden" th:field="*{id}" />
 <div class="form-group">
-    <input type="text" th:field="*{name}" placeholder="Название товара" class="form-control input-lg">
+    <input type="text" th:field="*{name}" placeholder="Название товара" required class="form-control input-lg">
 </div>
     <div class="form-group">
-  <input type="text" th:field="*{productType.id}" placeholder="Тип товара товара" class="form-control input-lg">
+  <input type="text" th:field="*{productType.id}" placeholder="Тип товара товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-    <input type="text" th:field="*{description}" placeholder="Описание товара" class="form-control input-lg">
+    <input type="text" th:field="*{description}" placeholder="Описание товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{shelf.id}" placeholder="Расположение товара" class="form-control input-lg">
+      <input type="text" th:field="*{shelf.id}" placeholder="Расположение товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{batch.id}" placeholder="Id партии товара" class="form-control input-lg">
+      <input type="text" th:field="*{batch.id}" placeholder="Id партии товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{remains}" placeholder="Остаток организации товара" class="form-control input-lg">
+      <input type="text" th:field="*{remains}" placeholder="Остаток организации товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{unitOfMeasurement}" placeholder="Единица измерения товара" class="form-control input-lg">
+      <input type="text" th:field="*{unitOfMeasurement}" placeholder="Единица измерения товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{price}" placeholder="Цена товара" class="form-control input-lg">
+      <input type="text" th:field="*{price}" placeholder="Цена товара" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{arrivalDate}" placeholder="Дата прихода товара" class="form-control input-lg">
+      <input type="text" th:field="*{arrivalDate}" placeholder="Дата прихода товара" required class="form-control input-lg">
     </div>
       <button type="submit" class="btn btn-default">Сохранить товар</button>
   </form>

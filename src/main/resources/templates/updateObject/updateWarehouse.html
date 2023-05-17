@@ -15,16 +15,16 @@
   <form action="#" th:action="@{/warehouse/save}" th:object="${warehouse}" method="POST">
     <input type="hidden" th:field="*{id}" />
     <div class="form-group">
-      <input type="text" th:field="*{name}" placeholder="Название" class="form-control input-lg">
+      <input type="text" th:field="*{name}" placeholder="Название" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{address}" placeholder="Адрес" class="form-control input-lg">
+      <input type="text" th:field="*{address}" placeholder="Адрес" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{warehousePhone}" placeholder="Складской телефон" class="form-control input-lg">
+      <input type="text" th:field="*{warehousePhone}" placeholder="Складской телефон" required class="form-control input-lg">
     </div>
     <div class="form-group">
-      <input type="text" th:field="*{square}" placeholder="Площадь" class="form-control input-lg">
+      <input type="text" th:field="*{square}" placeholder="Площадь" required class="form-control input-lg">
     </div>
       <button type="submit" class="btn btn-default">Сохранить склад</button>
   </form>

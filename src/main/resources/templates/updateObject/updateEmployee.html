@@ -17,37 +17,37 @@
           method="POST">
         <input type="hidden" th:field="*{id}"/>
         <div class="form-group">
-            <input type="text" th:field="*{surname}" placeholder="Фамилия сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{surname}" placeholder="Фамилия сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{name}" placeholder="Имя сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{name}" placeholder="Имя сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{patronymic}" placeholder="Отчество сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{patronymic}" placeholder="Отчество сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{position}" placeholder="Должность сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{position}" placeholder="Должность сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{dateOfBirth}" placeholder="Дата рождения сотрудника"
+            <input type="text" th:field="*{dateOfBirth}" placeholder="Дата рождения сотрудника" required
                    class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{address}" placeholder="Адрес сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{address}" placeholder="Адрес сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{phoneNumber}" placeholder="Сотовый телефон сотрудника"
+            <input type="text" th:field="*{phoneNumber}" placeholder="Сотовый телефон сотрудника" required
                    class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{email}" placeholder="Электронный адрес сотрудника"
+            <input type="text" th:field="*{email}" placeholder="Электронный адрес сотрудника" required
                    class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{login}" placeholder="Логин сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{login}" placeholder="Логин сотрудника" required class="form-control input-lg">
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{password}" placeholder="Пароль сотрудника" class="form-control input-lg">
+            <input type="text" th:field="*{password}" placeholder="Пароль сотрудника" required class="form-control input-lg">
         </div>
         <div sec:authorize="hasAuthority('ADMIN')" class="form-group">
             <button type="submit" class="btn btn-default">Save Employee</button>
