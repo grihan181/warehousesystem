@@ -9,7 +9,7 @@ public class DefaultController {
     private static final String jwtTokenCookieName = "Bearer";
     @GetMapping("/login")
     public String login() {
-        return "/login.html";
+        return "/login";
     }
     @GetMapping("/login-error")
     public String loginError(Model model) {
